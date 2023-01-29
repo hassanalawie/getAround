@@ -1,4 +1,5 @@
 import { StackNavigationProp } from '@react-navigation/stack';
+import { useFonts } from 'expo-font';
 import { Button, StyleSheet, Text, View, Image, TouchableOpacity, ViewStyle } from 'react-native';
 import { RootStackParamList } from '../RootStackParamList';
 
@@ -12,6 +13,12 @@ type Props = {
 };
 
 export default function Tutorial1({navigation}:Props) {
+      let [fontsLoaded] = useFonts({
+        'Montserrat':require('../assets/fonts/Montserrat-Regular.ttf'),
+    })
+    if(!fontsLoaded){
+      return <Text>Loading...</Text>
+    }
     return (
       <View style={styles.container}>
         <Image style={{position: 'absolute', top: 0, right: 0, height: 300, width: 400}} 
@@ -66,10 +73,12 @@ const styles = StyleSheet.create({
       fontSize: 32,
       textAlign: 'center',
       width:'80%',
+      fontFamily: 'Montserrat',
     },
     p:{
       fontSize: 20,
       textAlign: 'center',
+      fontFamily: 'Montserrat',
       
     },
     button:{
@@ -85,6 +94,7 @@ const styles = StyleSheet.create({
       textAlign:"center",
       fontSize:28,
       color:'white',
+      fontFamily: 'Montserrat',
 
     }
 });

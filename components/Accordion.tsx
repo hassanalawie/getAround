@@ -152,8 +152,10 @@ const styles = StyleSheet.create({
     textActive:{
         color:"white",
         fontFamily: 'Montserrat',
-        fontSize:20,
+        fontSize:15,
+        width:"60%",
+        textAlign:"center"
     },
-    textInActive:{color:"black",fontFamily: 'Montserrat',fontSize:20,}
+    textInActive:{color:"black",fontFamily: 'Montserrat',fontSize:15,width:"70%", textAlign:"center"}
     
 });

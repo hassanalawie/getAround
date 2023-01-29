@@ -19,13 +19,26 @@ type dataType = {
   value:boolean;
 }
 
+async function getBuildingsFromApi() {
+  try {
+    let response = await fetch(
+      'http://localhost:3000/Buildings/',
+    );
+    let responseJson = await response.json();
+    console.log(responseJson);
+    return responseJson;
+  } catch (error) {
+    console.error(error);
+  }
+}
 
 
 export default function Tutorial3({navigation}:Props) {
-  useEffect(() => {
-    LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
-}, [])
+
     const [buildings, setBuildings] = useState<Array<string>>([]);
+    useEffect(() => {
+      LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
+  }, [])
     const handleCallback = (childData:string) =>{
       buildings.includes(childData)?
       (setBuildings(

@@ -1,6 +1,7 @@
 import { StackNavigationProp } from '@react-navigation/stack';
 import { Button, Text, StyleSheet, View, Image, TouchableOpacity } from 'react-native';
 import { RootStackParamList } from '../RootStackParamList';
+import Pagination from '../components/Pagination';
 
 type ProfileScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
@@ -55,6 +56,10 @@ export default function Tutorial4({navigation}:Props) {
             your push notifications in {"\n"}
             Settings.
           </Text>
+
+          <Pagination
+        order={4}
+        />
 
       </View>
     );
@@ -113,7 +118,8 @@ const styles = StyleSheet.create({
     fontWeight: 'normal',
     letterSpacing: 0.25,
     color: 'grey',
-    textAlign: 'center'
+    textAlign: 'center',
+    marginBottom: 30,
   }
 
 });

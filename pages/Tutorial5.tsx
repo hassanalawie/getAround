@@ -1,6 +1,7 @@
 import { StackNavigationProp } from '@react-navigation/stack';
 import { Button, StyleSheet, Text, View, TouchableOpacity, Image, ImageStyle} from 'react-native';
 import { RootStackParamList } from '../RootStackParamList';
+import Pagination from '../components/Pagination';
 
 type ProfileScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
@@ -26,13 +27,17 @@ export default function Tutorial5({navigation}:Props) {
             You're all set!{"\n"}{"\n"}{"\n"}
           </Text>
 
-          <TouchableOpacity onPress={() => navigation.navigate('SelectBuilding')}>  
-            <Text style = {styles.button1}>
-               Let's Go {"->"}
-            </Text>
-         </TouchableOpacity>
-
-
+          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('SelectBuilding')}>
+            <View style={styles.homepageButton}>
+              <Text style={styles.buttonText}>Let's go </Text>
+              <Image style={{height: 15, width: 15, marginTop:13}} 
+              source={require('../assets/arrow.png')} 
+              /> 
+            </View>
+        </TouchableOpacity>
+        <Pagination
+        order={5}
+        />
       </View>
     );
 }
@@ -48,10 +53,11 @@ const styles = StyleSheet.create({
     text: {
       fontSize: 30,
       lineHeight: 30,
-      fontWeight: 'normal',
+      fontWeight: 'bold',
       letterSpacing: 0.25,
       color: 'black',
-      textAlign: 'center'
+      textAlign: 'center',
+      marginTop: 300
     },
     button1: {
       fontSize: 32,
@@ -70,6 +76,24 @@ const styles = StyleSheet.create({
       position: 'absolute',
       transform: [{ rotate: '185deg' }],
       
-     }
+     },
+     button:{
+      alignItems: 'center',
+      backgroundColor: '#1852B5',
+      padding: 10,
+      width:185,
+      height:60,
+      marginBottom: 200,
+      marginTop: 20,
+    },
+    buttonText:{
+      fontSize:20,
+      color:'white',
+      marginTop: 8
+  
+    },
+    homepageButton:{
+      flexDirection:'row'
+    }
 });
   

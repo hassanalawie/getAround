@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { Image, LogBox, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Accordian from '../components/Accordion';
 import { RootStackParamList } from '../RootStackParamList';
+import Pagination from '../components/Pagination';
 
 type ProfileScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
@@ -280,6 +281,9 @@ export default function Tutorial3({navigation}:Props) {
           }}>
             <Text style={styles.buttonText}>Next</Text>
         </TouchableOpacity>
+        <Pagination
+        order={3}
+        />
       </View>
     );
 
@@ -305,13 +309,15 @@ const styles = StyleSheet.create({
         padding: 10,
         width:185,
         height:60,
-        marginTop: 150
+        marginBottom: 50,
+        marginTop: 140,
       },
       buttonText: {
         textAlign:"center",
         fontSize:28,
         color:'white',
         fontFamily: 'Montserrat',
+        
       },
       scroll:{
         maxHeight:"40%",

@@ -1,5 +1,6 @@
 import { StackNavigationProp } from '@react-navigation/stack';
 import { Button, StyleSheet, Text, View, Image, TouchableOpacity, ViewStyle } from 'react-native';
+import Pagination from '../components/Pagination';
 import { RootStackParamList } from '../RootStackParamList';
 
 type ProfileScreenNavigationProp = StackNavigationProp<
@@ -17,36 +18,21 @@ export default function Tutorial1({navigation}:Props) {
         <Image style={{position: 'absolute', top: 0, right: 0, height: 300, width: 400}} 
             source={require('../assets/blobimage1.png')} 
             />  
-        <Image style={{marginTop: 100, height: 350, width: 350}} 
+        <Image style={{marginTop: -50, height: 350, width: 350}} 
             source={require('../assets/tutorialimage1.png')} 
             /> 
         <View style={styles.textContainer}> 
           <Text style={styles.h1}>Having Trouble Getting to Class?{'\n'}</Text>
-          <Text style={styles.p}>Get Around can help you find an accessible route to your next class and provide the fastest route so you can get to class on time.</Text>
+          <Text style={styles.p}>GetAround can help you find an accessible route to your next class and provide the fastest route so you can get to class on time.</Text>
         </View>
         <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Tutorial2')}>
             <Text style={styles.buttonText}>Next</Text>
         </TouchableOpacity>
+        <Pagination
+        order={1}
+        />
       </View>
     );
-}
-
-const PAGINATION: ViewStyle = {
-  width: 20,
-  flexDirection: 'row',
-  justifyContent: 'center',
-}
-
-const PAGINATION_DOT: ViewStyle = {
-  borderRadius: 12,
-  width: 12,
-  height: 12,
-  margin: 15,
-  backgroundColor: 'white'
-}
-
-const PAGINATION_DOT_SELECTED: ViewStyle ={
-  backgroundColor: '#1852B5'
 }
 
 const styles = StyleSheet.create({
@@ -78,8 +64,9 @@ const styles = StyleSheet.create({
       padding: 10,
       width:185,
       height:60,
-      marginBottom: 200,
-      marginTop: 50,
+      marginBottom: 50,
+      marginTop: 100,
+
     },
     buttonText:{
       textAlign:"center",

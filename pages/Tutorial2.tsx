@@ -1,5 +1,6 @@
 import { StackNavigationProp } from '@react-navigation/stack';
 import { Button, StyleSheet, Text, View, Image, TouchableOpacity, ViewStyle } from 'react-native';
+import Pagination from '../components/Pagination';
 import { RootStackParamList } from '../RootStackParamList';
 
 type ProfileScreenNavigationProp = StackNavigationProp<
@@ -11,13 +12,13 @@ type Props = {
   navigation: ProfileScreenNavigationProp;
 };
 
-export default function Tutorial1({navigation}:Props) {
+export default function Tutorial2({navigation}:Props) {
     return (
       <View style={styles.container}>
         <Image style={{position: 'absolute', top: 0, right: 0, height: 300, width: 400}} 
             source={require('../assets/blobimage1.png')} 
             />  
-        <Image style={{marginTop: 100, height: 350, width: 350}} 
+        <Image style={{marginTop: -50, height: 350, width: 350}} 
             source={require('../assets/tutorialimage2.png')} 
             /> 
         <View style={styles.textContainer}> 
@@ -27,7 +28,11 @@ export default function Tutorial1({navigation}:Props) {
         <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Tutorial3')}>
             <Text style={styles.buttonText}>Next</Text>
         </TouchableOpacity>
+        <Pagination
+        order={2}
+        />
       </View>
+      
     );
 }
 
@@ -78,8 +83,8 @@ const styles = StyleSheet.create({
       padding: 10,
       width:185,
       height:60,
-      marginBottom: 225,
-      marginTop: 50,
+      marginBottom: 50,
+      marginTop: 75,
     },
     buttonText:{
       textAlign:"center",

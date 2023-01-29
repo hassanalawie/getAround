@@ -10,11 +10,13 @@ type ProfileScreenNavigationProp = StackNavigationProp<
 
 type Props = {
   navigation: ProfileScreenNavigationProp;
+  route: any
 };
 
 
 
-export default function Tutorial4({navigation}:Props) {
+export default function Tutorial4({route, navigation}:Props) {
+  const { buildings } = route.params;
     let [fontsLoaded] = useFonts({
         'Montserrat':require('../assets/fonts/Montserrat-Regular.ttf'),
     })
@@ -44,13 +46,13 @@ export default function Tutorial4({navigation}:Props) {
           </Text>
         
 
-        <TouchableOpacity onPress={() => navigation.navigate('Tutorial5')}>  
+        <TouchableOpacity onPress={() => navigation.navigate('Tutorial5',{buildings})}>  
             <Text style = {styles.button1}>
                Enable
             </Text>
          </TouchableOpacity>
 
-         <TouchableOpacity onPress={() => navigation.navigate('Tutorial5')}>  
+         <TouchableOpacity onPress={() => navigation.navigate('Tutorial5',{buildings})}>  
             <Text style = {styles.button2}>
                Skip
             </Text>

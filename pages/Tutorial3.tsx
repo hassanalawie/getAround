@@ -185,7 +185,7 @@ export default function Tutorial3({navigation}:Props) {
                       )}
                   </ScrollView>
               <TouchableOpacity style={styles.button} onPress={() => {
-                navigation.navigate('Tutorial4')
+                navigation.navigate('Tutorial4',{buildings})
                 console.log(buildings);
                 }}>
                   <Text style={styles.buttonText}>Next</Text>

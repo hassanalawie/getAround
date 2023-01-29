@@ -1,4 +1,5 @@
 import { StackNavigationProp } from '@react-navigation/stack';
+import { useFonts } from 'expo-font';
 import { Button, StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import { RootStackParamList } from '../RootStackParamList';
 
@@ -12,6 +13,12 @@ type Props = {
 };
 
 export default function HomeScreen({navigation}:Props) {
+  let [fontsLoaded] = useFonts({
+    'Montserrat':require('../assets/fonts/Montserrat-Regular.ttf'),
+})
+if(!fontsLoaded){
+  return <Text>Loading...</Text>
+}
     return (
       <View style={styles.container}>
         <Image style={{justifyContent: 'center', position: 'absolute', top: 50, height: 80.19, width: 200}} 
@@ -51,10 +58,12 @@ const styles = StyleSheet.create({
     fontSize: 32,
     textAlign: 'center',
     width:'80%',
+    fontFamily: 'Montserrat',
   },
   p:{
     fontSize: 20,
     textAlign: 'center',
+    fontFamily: 'Montserrat',
     
   },
   button:{
@@ -69,7 +78,8 @@ const styles = StyleSheet.create({
   buttonText:{
     fontSize:20,
     color:'white',
-    marginTop: 8
+    marginTop: 8,
+    fontFamily: 'Montserrat',
 
   },
   homepageButton:{

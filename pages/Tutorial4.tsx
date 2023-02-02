@@ -1,4 +1,5 @@
 import { StackNavigationProp } from '@react-navigation/stack';
+import { useFonts } from 'expo-font';
 import { Button, Text, StyleSheet, View, Image, TouchableOpacity } from 'react-native';
 import { RootStackParamList } from '../RootStackParamList';
 import Pagination from '../components/Pagination';
@@ -10,11 +11,19 @@ type ProfileScreenNavigationProp = StackNavigationProp<
 
 type Props = {
   navigation: ProfileScreenNavigationProp;
+  route: any
 };
 
 
 
-export default function Tutorial4({navigation}:Props) {
+export default function Tutorial4({route, navigation}:Props) {
+  const { buildings } = route.params;
+    let [fontsLoaded] = useFonts({
+        'Montserrat':require('../assets/fonts/Montserrat-Regular.ttf'),
+    })
+    if(!fontsLoaded){
+      return <Text>Loading...</Text>
+    }
     return (
       <View style={styles.container}>
       <Image
@@ -38,13 +47,13 @@ export default function Tutorial4({navigation}:Props) {
           </Text>
         
 
-        <TouchableOpacity onPress={() => navigation.navigate('Tutorial5')}>  
+        <TouchableOpacity onPress={() => navigation.navigate('Tutorial5',{buildings})}>  
             <Text style = {styles.button1}>
                Enable
             </Text>
          </TouchableOpacity>
 
-         <TouchableOpacity onPress={() => navigation.navigate('Tutorial5')}>  
+         <TouchableOpacity onPress={() => navigation.navigate('Tutorial5',{buildings})}>  
             <Text style = {styles.button2}>
                Skip
             </Text>
@@ -92,7 +101,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 70,
     backgroundColor: '#1852B5',
     color: 'white',
-    margin:10
+    margin:10,
+    fontFamily: 'Montserrat',
    },
 
    button2: {
@@ -101,7 +111,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 90,
     backgroundColor: '#425575',
     color: 'white',
-    margin:14
+    margin:14,
+    fontFamily: 'Montserrat',
    },
 
    text: {
@@ -110,7 +121,8 @@ const styles = StyleSheet.create({
     fontWeight: 'normal',
     letterSpacing: 0.25,
     color: 'black',
-    textAlign: 'center'
+    textAlign: 'center',
+    fontFamily: 'Montserrat',
   },
   text2: {
     fontSize: 16,
@@ -120,6 +132,7 @@ const styles = StyleSheet.create({
     color: 'grey',
     textAlign: 'center',
     marginBottom: 30,
+    fontFamily: 'Montserrat',
   }
 
 });

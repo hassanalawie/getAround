@@ -1,4 +1,5 @@
 import { StackNavigationProp } from '@react-navigation/stack';
+import { useFonts } from 'expo-font';
 import { Button, StyleSheet, Text, View, TouchableOpacity, Image, ImageStyle} from 'react-native';
 import { RootStackParamList } from '../RootStackParamList';
 import Pagination from '../components/Pagination';
@@ -10,10 +11,18 @@ type ProfileScreenNavigationProp = StackNavigationProp<
 
 type Props = {
   navigation: ProfileScreenNavigationProp;
+  route: any
 };
 
 
-export default function Tutorial5({navigation}:Props) {
+export default function Tutorial5({route,navigation}:Props) {
+  const { buildings } = route.params;
+  let [fontsLoaded] = useFonts({
+    'Montserrat':require('../assets/fonts/Montserrat-Regular.ttf'),
+  })
+  if(!fontsLoaded){
+    return <Text>Loading...</Text>
+  }
   return (
     <View style={styles.container}>
     <Image
@@ -27,7 +36,7 @@ export default function Tutorial5({navigation}:Props) {
             You're all set!{"\n"}{"\n"}{"\n"}
           </Text>
 
-          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('SelectBuilding')}>
+          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('SelectBuilding', {buildings:['apple', 'banana']})}>
             <View style={styles.homepageButton}>
               <Text style={styles.buttonText}>Let's go </Text>
               <Image style={{height: 15, width: 15, marginTop:13}} 
@@ -57,7 +66,8 @@ const styles = StyleSheet.create({
       letterSpacing: 0.25,
       color: 'black',
       textAlign: 'center',
-      marginTop: 300
+      marginTop: 300,
+      fontFamily: 'Montserrat',
     },
     button1: {
       fontSize: 32,
@@ -66,7 +76,8 @@ const styles = StyleSheet.create({
       backgroundColor: '#1852B5',
       color: 'white',
       margin:10,
-      textAlign: 'center'
+      textAlign: 'center',
+      fontFamily: 'Montserrat',
      },
      image: {
       width: 250,
